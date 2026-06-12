@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+pillow
+numpy
+tensorflow
+python-multipart
+# Raspberry Pi: tensorflow yerine → pip install tflite-runtime

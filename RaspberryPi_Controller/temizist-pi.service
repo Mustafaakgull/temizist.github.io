@@ -1,0 +1,16 @@
+[Unit]
+Description=TemizIST Raspberry Pi Controller
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+Type=simple
+User=temizist
+WorkingDirectory=/home/temizist/TemizIST/RaspberryPi_Controller
+ExecStart=/home/temizist/TemizIST/RaspberryPi_Controller/venv/bin/python3 main.py
+Restart=on-failure
+RestartSec=5
+Environment=PYTHONUNBUFFERED=1
+
+[Install]
+WantedBy=multi-user.target

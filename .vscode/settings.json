@@ -1,0 +1,7 @@
+{
+    "python.defaultInterpreterPath": "${workspaceFolder}/FastAPI_Backend/venv/Scripts/python.exe",
+    "python.analysis.extraPaths": [
+        "${workspaceFolder}/FastAPI_Backend",
+        "${workspaceFolder}/FastAPI_Backend/venv/Lib/site-packages"
+    ]
+}

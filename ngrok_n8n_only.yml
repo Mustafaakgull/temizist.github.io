@@ -1,0 +1,11 @@
+# ngrok n8n için özel ayar dosyası
+# Bu dosya, n8n tünelini ikinci ngrok hesabınızın authtoken'ı ile açar 
+# ve web arayüzünü port 4041'e alarak FastAPI'nin (port 4040) çökmesini engeller.
+
+version: "2"
+authtoken: 3EBA4fTmbFvJyx4jbqLQyKyJDY4_FGnxuy7caRSCs4hmmBWg
+web_addr: false
+tunnels:
+  n8n:
+    proto: http
+    addr: 5678

@@ -1,0 +1,54 @@
+# Graduation Project Çalıştırma Komutları
+
+Bu dosyada projeyi ayağa kaldırmak için gereken komutlar bulunmaktadır. 
+Lütfen VS Code veya Powershell üzerinde ayrı terminal sekmeleri açarak her bir komutu çalıştırınız.
+
+(Not: FastAPI ve n8n servisleri arka planda Docker üzerinde zaten çalışmaktadır. Aşağıdaki komutlar bu servislere tünel açmayı ve frontend/raspberry pi uygulamalarını başlatmayı sağlar.)
+
+==================================================
+1. Terminal: FastAPI ngrok Tüneli
+==================================================
+Bu komut FastAPI için ngrok tüneli açacaktır (ngrok_fastapi_only.yml kullanarak):
+
+cd "C:\Users\gokha\Masaüstü\Graduation Project"
+ngrok start --all --config="ngrok_fastapi_only.yml"
+
+
+==================================================
+2. Terminal: n8n ngrok Tüneli (İsteğe Bağlı)
+==================================================
+Bu komut n8n için ngrok tüneli açacaktır (ngrok_n8n_only.yml kullanarak):
+* DİKKAT: Expo tüneliyle aynı token'ı kullanır. Aynı anda Expo'yu --tunnel ile başlatırsanız çakışma (remote gone away) yaşanır.
+
+cd "C:\Users\gokha\Masaüstü\Graduation Project"
+ngrok start --all --config="ngrok_n8n_only.yml"
+
+
+==================================================
+3. Terminal: TemizIst Frontend Başlatma
+==================================================
+Bu komut Expo'yu yerel ağda başlatacaktır (tünelsiz, en güvenli).
+* Not: npx expo start -c --tunnel komutu ile tünel açabilirsiniz ancak 2. Terminal ile aynı anda çakışacaktır.
+
+cd "C:\Users\gokha\Masaüstü\Graduation Project\TemizIst-v1\TemizIST Frontend"
+npx expo start -c --tunnel
+
+
+==================================================
+4. Terminal: Raspberry Pi Deployment ve Çalıştırma
+==================================================
+Bu komutlar RaspberryPi_Controller kodlarını cihaza atıp ssh üzerinden çalıştırır.
+
+A) Kodları Göndermek (SCP):
+cd "C:\Users\gokha\Masaüstü\Graduation Project"
+scp -r "RaspberryPi_Controller" temizist@192.168.1.114:/home/temizist/TemizIST/
+
+B) Cihaza Bağlanıp Çalıştırmak (SSH):
+ssh temizist@192.168.1.114
+
+(Şifreyi girdikten sonra Pi içinde şu komutları çalıştırın):
+cd /home/temizist/TemizIST/RaspberryPi_Controller
+source venv/bin/activate
+python3 main.py
+
+* Alternatif olarak gönderme işlemi için klasör içindeki "deploy-to-pi.ps1" betiğini de kullanabilirsiniz.

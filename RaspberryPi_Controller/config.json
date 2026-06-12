@@ -1,0 +1,58 @@
+{
+  "backend_url": "https://doorbell-outnumber-ravishing.ngrok-free.dev",
+  "machine_id": 1,
+  "polling_interval_seconds": 10,
+  "ultrasonic_placement_threshold_cm": 25.0,
+  "ultrasonic_pass_threshold_cm": 20.0,
+  "ultrasonic_stable_readings": 3,
+  "plastic_servo_run_seconds": 5,
+  "plastic_servo_control": "throttle",
+  "plastic_servo_direction": 1,
+  "plastic_servo_pulse_width_min": 1000,
+  "plastic_servo_pulse_width_max": 2000,
+  "plastic_servo_run_throttle": 0.85,
+  "plastic_servo_stop_throttle": 0.3,
+  "plastic_servo_stop_pulse_us": 1650,
+  "plastic_servo_stop_cut_pwm": false,
+  "plastic_servo_cut_pwm_on_exit": true,
+  "plastic_servo_pulse_us_stop": 1650,
+  "plastic_servo_pulse_us_run": 1800,
+  "plastic_servo_pulse_us_run_reverse": 1300,
+  "paper_servo_closed_angle": 0,
+  "paper_servo_open_angle": 180,
+  "paper_servo_move_seconds": 1.5,
+  "paper_lid_stay_open_seconds": 7,
+  "min_weight_grams": 50,
+  "hx711_enabled": false,
+  "use_default_images": false,
+  "default_image_plastic": "assets/default_plastic.png",
+  "default_image_paper": "assets/default_paper.png",
+  "camera_plastic": "/dev/video1",
+  "camera_paper": "/dev/video0",
+  "pca9685_address": 64,
+  "qr_codes": {
+    "plastic": "1_plastic",
+    "paper": "1_paper"
+  },
+  "gpio_pins": {
+    "trig_plastic": 27,
+    "echo_plastic": 22,
+    "trig_paper": 23,
+    "echo_paper": 24,
+    "hx711_dt": 26,
+    "hx711_sck": 16
+  },
+  "pca_channels": {
+    "servo_plastic_360": 0,
+    "servo_paper_1": 1,
+    "servo_paper_2": 8
+  },
+  "reject_alert": {
+    "buzzer_gpio": 25,
+    "led_gpio": 5,
+    "alert_seconds": 2.0,
+    "buzzer_beep_count": 3,
+    "buzzer_beep_on_ms": 200,
+    "buzzer_beep_off_ms": 150
+  }
+}

@@ -1,0 +1,10 @@
+# ngrok FastAPI için özel ayar dosyası
+# Bu dosya, FastAPI tünelini birinci ngrok hesabınızın authtoken'ı ile açar.
+
+version: "2"
+authtoken: 3EHC5vinOrhr1P0Z5y9ahDdzisF_3J2vep48hUodxHJ33Fz1Q
+web_addr: false
+tunnels:
+  fastapi:
+    proto: http
+    addr: 8000

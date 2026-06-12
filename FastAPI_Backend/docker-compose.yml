@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: temizist_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: temizist
+      POSTGRES_PASSWORD: temizist_pass
+      POSTGRES_DB: temizist_db
+    ports:
+      - "5433:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  web:
+    build: .
+    container_name: temizist_fastapi
+    restart: always
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql+asyncpg://temizist:temizist_pass@db:5432/temizist_db
+      - AI_SERVER_URL=http://host.docker.internal:9000
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    depends_on:
+      - db
+
+volumes:
+  pgdata:
